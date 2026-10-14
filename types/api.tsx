@@ -49,7 +49,7 @@ export interface ProjectDeveloperIntroduction {
     introduction_description: string;
 }
 
-export interface ProjectDeveloperProject {
+export interface Project {
     project_name: string;
     project_logo_url: string;
     banner_image_url: string;
