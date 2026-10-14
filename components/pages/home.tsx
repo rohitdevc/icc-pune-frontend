@@ -18,7 +18,7 @@ export default function HomePage({banner}: Props) {
     return (
         <>
         <Header />
-        <main>
+        <main className="h-screen">
             
         </main>
         <Footer />

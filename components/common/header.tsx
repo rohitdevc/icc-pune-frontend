@@ -28,6 +28,7 @@ export default function Header() {
         {
             nav_name: 'About',
             nav_link: '/about-us',
+            nav_colour_code: '#58595b',
             nav_sub_links: [
                 {
                     nav_name: 'Overview',
@@ -50,6 +51,7 @@ export default function Header() {
         {
             nav_name: 'Developments',
             nav_link: '',
+            nav_colour_code: '#818286',
             nav_sub_links: [
                 {
                     nav_name: 'ICC Tech Park',
@@ -155,17 +157,40 @@ export default function Header() {
         },
         {
             nav_name: 'Project Developer',
-            nav_link: '/luxury-residential-commercial-property-developer/panchshil-realty'
+            nav_link: '/luxury-residential-commercial-property-developer/panchshil-realty',
+            nav_colour_code: '#a8a9ad',
         },
         {
             nav_name: 'Contact',
-            nav_link: '/retail-and-office-spaces-at-sb-road-pune/contact-us'
+            nav_link: '/retail-and-office-spaces-at-sb-road-pune/contact-us',
+            nav_colour_code: '#00498d',
         },
     ]
 
     return (
-        <header className="fixed top-0 w-full z-5 bg-white">
-            
+        <header className="fixed top-0 w-full z-5 bg-white flex items-center justify-between px-5 sm:px-10 md:px-15 lg:px-20 xl:px-25 2xl:px-40">
+            <div className="bg-[#ececec] px-5 py-3">
+                <Image src={`${basePath}/images/icc-logo.png`} alt="ICC Pune logo" width={155} height={60} className="object-contain" />
+            </div>
+            {
+                nav_options && nav_options.length > 0 && (
+                    <ul className="flex text-white uppercase text-xs">
+                        {
+                            nav_options.map((nav_option, key) => (
+                                <li key={key}>
+                                    {
+                                        nav_option.nav_link ? (
+                                            <Link className="w-fit py-3 px-10" href={nav_option.nav_link} style={{backgroundColor: `${nav_option.nav_colour_code}`}}>{nav_option.nav_name}</Link>
+                                        ) : (
+                                            <span className="cursor-pointer w-fit py-3 px-10" style={{backgroundColor: `${nav_option.nav_colour_code}`}}>{nav_option.nav_name}</span>
+                                        )
+                                    }
+                                </li>
+                            ))
+                        }
+                    </ul>
+                )
+            }
         </header>
     )
 }
