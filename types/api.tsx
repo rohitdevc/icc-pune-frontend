@@ -87,6 +87,11 @@ export interface Gallery {
 
 export interface Development {
     project_name: string;
+    page_slug: string;
+}
+
+export interface Developments {
+    project_name: string;
     introduction_caption: string;
     introduction_description: string;
     amenity_caption: string;

@@ -49,7 +49,7 @@ export default function Header() {
                     nav_sub_links: [
                         {
                             nav_name: 'About ICC Tech Park',
-                            nav_link: '/commercial-property-in-pune/icc-tech-park'
+                            nav_link: '/commercial-property-in-pune/icc-tech-park#overview'
                         },
                         {
                             nav_name: 'Amenities & Specifications',
@@ -71,7 +71,7 @@ export default function Header() {
                     nav_sub_links: [
                         {
                             nav_name: 'About ICC Trade Tower',
-                            nav_link: '/commercial-project-at-sb-road-pune/icc-trade-tower'
+                            nav_link: '/commercial-project-at-sb-road-pune/icc-trade-tower#overview'
                         },
                         {
                             nav_name: 'Amenities & Specifications',
@@ -127,7 +127,7 @@ export default function Header() {
                     nav_sub_links: [
                         {
                             nav_name: 'About The Pavillion',
-                            nav_link: '/shopping-mall-at-sb-road-pune/the-pavillion'
+                            nav_link: '/shopping-mall-at-sb-road-pune/the-pavillion#overview'
                         },
                         {
                             nav_name: 'Amenities & Specifications',
@@ -172,21 +172,21 @@ export default function Header() {
     return (
         <header className="fixed top-0 w-full z-5 bg-white">
             <div className="relative">
-                <div className="flex items-center justify-between pr-5 sm:px-10 md:px-15 xl:px-25 2xl:px-40">
+                <div className="flex items-center justify-between pr-5 sm:px-10 lg:px-15 xl:px-25 2xl:px-40">
                     <Link href="/" className="bg-[#ececec] px-5 py-3 w-[130px] lg:w-auto">
-                        <Image src={`${basePath}/images/icc-logo.png`} alt="ICC Pune logo" width={155} height={60} className="object-contain" />
+                        <Image src={`${basePath}/images/icc-logo.png`} alt="ICC Pune logo" width={155} height={60} className="object-contain" loading="eager" />
                     </Link>
                     {
                         nav_options && nav_options.length > 0 && (
-                            <ul className="hidden lg:flex text-white uppercase text-xs" onMouseLeave={() => {updateActiveFirstNav(-1); updateActiveSecondNav(-1) } }>
+                            <ul className="hidden md:flex text-white uppercase text-xs" onMouseLeave={() => {updateActiveFirstNav(-1); updateActiveSecondNav(-1) } }>
                                 {
                                     nav_options.map((nav_option, key) => (
                                         <li key={key} className="relative">
                                             {
                                                 nav_option.nav_link ? (
-                                                    <Link className="py-3 px-10" href={nav_option.nav_link} style={{backgroundColor: `${nav_option.nav_colour_code}`}} onMouseEnter={() => { updateActiveFirstNav(key); updateActiveSecondNav(-1) }}>{nav_option.nav_name}</Link>
+                                                    <Link className="py-3 px-5 lg:px-10" href={nav_option.nav_link} style={{backgroundColor: `${nav_option.nav_colour_code}`}} onMouseEnter={() => { updateActiveFirstNav(key); updateActiveSecondNav(-1) }}>{nav_option.nav_name}</Link>
                                                 ) : (
-                                                    <span className="cursor-pointer py-3 px-10" style={{backgroundColor: `${nav_option.nav_colour_code}`}} onMouseEnter={() => { updateActiveFirstNav(key); updateActiveSecondNav(-1) }}>{nav_option.nav_name}</span>
+                                                    <span className="cursor-pointer py-3 px-5 lg:px-10" style={{backgroundColor: `${nav_option.nav_colour_code}`}} onMouseEnter={() => { updateActiveFirstNav(key); updateActiveSecondNav(-1) }}>{nav_option.nav_name}</span>
                                                 )
                                             }
                                             {
@@ -221,11 +221,11 @@ export default function Header() {
                             </ul>
                         )
                     }
-                    <IoIosMenu className="lg:hidden text-black cursor-pointer" size={40} onClick={() => { updateMenuState(!menuState) }} />
+                    <IoIosMenu className="md:hidden text-black cursor-pointer" size={40} onClick={() => { updateMenuState(!menuState) }} />
                 </div>
             {
                 nav_options && nav_options.length > 0 && (
-                    <ul className={`absolute top-15 lg:hidden w-full flex-col justify-center items-center z-2 text-white uppercase text-xs transition-all duration-300 origin-top ${menuState ? 'scale-y-100' : 'scale-y-0'}`}>
+                    <ul className={`absolute top-15 md:hidden w-full flex-col justify-center items-center z-2 text-white uppercase text-xs transition-all duration-300 origin-top ${menuState ? 'scale-y-100' : 'scale-y-0'}`}>
                         {
                             nav_options.map((nav_option, key) => (
                                 <li key={key} className="relative border-t border-black">

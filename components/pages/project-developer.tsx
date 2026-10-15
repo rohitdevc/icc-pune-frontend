@@ -53,13 +53,13 @@ export default function ProjectDeveloperPage({
             marginBottom: `${footerHeight}px`,
             minHeight: `calc(100vh - ${headerHeight}px - ${footerHeight}px)`
         }}>
-           <section className="bg-black text-white px-5 sm:px-10 md:px-15 lg:px-20 lg:pl-[30%] py-10 flex flex-col gap-10">
+           <section className="bg-black text-white px-5 sm:px-10 md:px-15 lg:px-20 lg:pl-[20%] xl:pl-[30%] py-10 flex flex-col gap-10">
                 <Image className="w-20 md:w-25" src={`${basePath}/images/panchshil-logo.jpg`} width={143} height={143} alt="Panchshil Logo" />
                 <p className="text-sm leading-6">{parser(nl2br(introduction.introduction_description))}</p>
             </section>
             {
                 projects && projects.length > 0 && projects.map((project, key) => (
-                    <section key={key} className="w-full md:h-screen bg-contain md:bg-cover bg-center bg-no-repeat" style={{backgroundImage: `url(${project.banner_image_url})`}} title={project.project_name}>
+                    <section key={key} className="w-full h-screen bg-cover bg-center bg-no-repeat" style={{backgroundImage: `url(${project.banner_image_url})`}} title={project.project_name}>
                         <Image src={project.project_logo_url} alt={project.project_name} width={276} height={61} className="pt-10" />
                     </section>
                 ))

@@ -5,7 +5,6 @@ import Image from "next/image"
 import Header from "@/components/common/header";
 import Footer from "@/components/common/footer";
 
-import Link from "next/link";
 import { Banner } from "@/types/api";
 
 import { useState, useEffect } from "react";

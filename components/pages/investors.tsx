@@ -50,7 +50,7 @@ export default function ProjectDeveloperPage({
             marginBottom: `${footerHeight}px`,
             minHeight: `calc(100vh - ${headerHeight}px - ${footerHeight}px)`
         }}>
-            <section className="bg-black text-white px-5 sm:px-10 md:px-15 lg:px-20 lg:pl-[30%] py-10 flex flex-col gap-10">
+            <section className="bg-black text-white px-5 sm:px-10 md:px-15 lg:px-20 lg:pl-[20%] xl:pl-[30%] py-10 flex flex-col gap-10">
                 <h1 className="text-3xl uppercase">Investors</h1>
                 {
                     investors && investors.length > 0 && investors.slice(0, 2).map((investor, key) => (
@@ -77,16 +77,16 @@ export default function ProjectDeveloperPage({
                 }
                 <div className="text-sm flex flex-col gap-1">
                     <div className="flex gap-2">
-                        <h4 className="w-15">Name</h4>
-                        <p className="font-bold">: IDBI Trusteeship Services Limited</p>
+                        <h4 className="w-15 shrink-0">Name</h4>
+                        <p className="font-bold flex-1">: IDBI Trusteeship Services Limited</p>
                     </div>
                     <div className="flex gap-2">
-                        <h4 className="w-15">Address</h4>
-                        <p className="font-bold">: Asian Building, Ground Floor, 17, R. Kamani Marg, Balard Estate, Mumbai: 400 001</p>
+                        <h4 className="w-15 shrink-0">Address</h4>
+                        <p className="font-bold flex-1">: Asian Building, Ground Floor, 17, R. Kamani Marg, Balard Estate, Mumbai: 400 001</p>
                     </div>
                     <div className="flex gap-2">
-                        <h4 className="w-15">Phone</h4>
-                        <p className="font-bold">: <Link href="tel:+912240807018" className="text-[lightblue]">+91 22 4080 7018</Link></p>
+                        <h4 className="w-15 shrink-0">Phone</h4>
+                        <p className="font-bold flex-1">: <Link href="tel:+912240807018" className="text-[lightblue]">+91 22 4080 7018</Link></p>
                     </div>
                 </div>
                 <div className="text-sm flex flex-col gap-3">
@@ -94,24 +94,24 @@ export default function ProjectDeveloperPage({
                     <p className="leading-6">The investor grievance redressal cell will monitor the investor’s complaint, under the supervision of the Compliance Officer, and have the same redressed at the earliest.</p>
                     <p className="leading-6">Investors wishing to register a complaint, may approach the company’s Compliance Officer:</p>
                     <div className="flex gap-2">
-                        <h4 className="w-15">Name</h4>
-                        <p className="font-bold">: Mr. Chinmay Kulkarni</p>
+                        <h4 className="w-15 shrink-0">Name</h4>
+                        <p className="font-bold flex-1">: Mr. Chinmay Kulkarni</p>
                     </div>
                     <div className="flex gap-2">
-                        <h4 className="w-15">Address</h4>
-                        <p className="font-bold">: Tech Park One, Tower 'E', Next to Don Bosco School, Off Airport Road, Yerwada, Pune: 411 006</p>
+                        <h4 className="w-15 shrink-0">Address</h4>
+                        <p className="font-bold flex-1">: Tech Park One, Tower 'E', Next to Don Bosco School, Off Airport Road, Yerwada, Pune: 411 006</p>
                     </div>
                     <div className="flex gap-2">
                         <h4 className="w-15">Email</h4>
-                        <p className="font-bold">: <Link href="mailto:secretarial@panchshil.com" className="text-[lightblue]">secretarial@panchshil.com</Link></p>
+                        <p className="font-bold flex-1">: <Link href="mailto:secretarial@panchshil.com" className="text-[lightblue]">secretarial@panchshil.com</Link></p>
                     </div>
                     <div className="flex gap-2">
-                        <h4 className="w-15">Phone</h4>
-                        <p className="font-bold">: <Link href="tel:+912066473100" className="text-[lightblue]">+91 20 6647 3100</Link></p>
+                        <h4 className="w-15 shrink-0 shrink-0">Phone</h4>
+                        <p className="font-bold flex-1">: <Link href="tel:+912066473100" className="text-[lightblue]">+91 20 6647 3100</Link></p>
                     </div>
                     <div className="flex gap-2">
-                        <h4 className="w-15">Fax</h4>
-                        <p className="font-bold">: +91 20 6647 3101</p>
+                        <h4 className="w-15 shrink-0">Fax</h4>
+                        <p className="font-bold flex-1">: +91 20 6647 3101</p>
                     </div>
                 </div>
                 {
@@ -137,7 +137,7 @@ export default function ProjectDeveloperPage({
                         </div>
                     ))
                 }
-                <div className="text-sm flex flex-col gap-3 max-w-screen w-sm">
+                <div className="text-sm flex flex-col gap-3 max-w-screen md:w-sm">
                     <h2 className="uppercase"><b>CORPORATE IDENTIFICATION NUMBER</b></h2>
                     <p className="flex gap-10"><span>CIN</span> <span>: U45201PN2002PTC143638</span></p>
                 </div>

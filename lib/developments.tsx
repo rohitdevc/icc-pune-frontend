@@ -2,7 +2,10 @@
 
 import { apiGETFetch } from "./api";
 import {
-    Development
+    Development,
+    Developments
 } from "@/types/api";
 
-export const getDevelopment = async (page_slug_one: string, page_slug_two: string) => apiGETFetch<Development>(`developments/${page_slug_one}/${page_slug_two}`);
+export const getDevelopments = async () => apiGETFetch<Development[]>(`developments`);
+
+export const getDevelopment = async (page_slug_one: string, page_slug_two: string) => apiGETFetch<Developments>(`developments/${page_slug_one}/${page_slug_two}`);

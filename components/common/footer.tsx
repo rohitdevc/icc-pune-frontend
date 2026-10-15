@@ -16,7 +16,7 @@ export default function Footer() {
         <>
         <footer className="fixed bottom-0 w-full z-5 bg-white flex items-center justify-between px-2 sm:px-10 md:px-15 lg:px-20 xl:px-25 2xl:px-40 uppercase text-[10px] md:text-xs">
             <div className="px-5 py-2 w-[130px] md:w-auto">
-                <Image src={`${basePath}/images/mccia.png`} alt="MICCIA logo" width={155} height={67} className="object-contain" />
+                <Image src={`${basePath}/images/mccia.png`} alt="MICCIA logo" width={155} height={67} className="object-contain w-full h-full" />
             </div>
             <div className="flex flex-col gap-2 md:gap-3">
                 <ul className="flex gap-3 text-[#00498d] justify-end">
@@ -31,8 +31,8 @@ export default function Footer() {
                 <p className="text-[#939598]">COPYRIGHT: ICC REALTY (I) PVT. LTD. {new Date().getFullYear()}</p>
             </div>
         </footer>
-        <section className={`fixed top-0 left-0 h-screen overflow-y-auto w-full md:p-10 transition-all duration-300 origin-top text-black bg-black/50 z-5 ${showDisclaimer ? 'scale-y-100' : 'scale-y-0'}`}>
-            <div className="bg-white relative max-w-screen w-2xl mx-auto py-10 px-10 flex flex-col gap-5">
+        <section className={`fixed top-0 left-0 h-screen overflow-y-auto w-full p-5 md:p-10 transition-all duration-300 origin-top text-black bg-black/50 z-5 ${showDisclaimer ? 'scale-y-100' : 'scale-y-0'}`}>
+            <div className="bg-white relative max-w-screen md:w-2xl lg:w-5xl mx-auto py-10 px-10 flex flex-col gap-5">
                 <TfiClose size={20} className="absolute right-5 top-5 cursor-pointer" onClick={() => updateShowDisclaimer(false)}/>
                 <h2 className="uppercase text-3xl text-center">Disclaimer</h2>
                 <div className="text-sm flex flex-col gap-4">

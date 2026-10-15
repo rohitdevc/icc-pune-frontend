@@ -61,8 +61,8 @@ export default function AboutUsPage({
             marginBottom: `${footerHeight}px`,
             minHeight: `calc(100vh - ${headerHeight}px - ${footerHeight}px)`
         }}>
-            <Image src={banner.banner_image_url} alt={banner.banner_image_caption || "ICC Pune"} width={1920} height={1080} className="w-screen md:h-screen" />
-            <section className="bg-black text-white px-5 sm:px-10 md:px-15 lg:px-20 lg:pl-[30%] py-20 flex flex-col gap-10" id="overview">
+            <Image src={banner.banner_image_url} alt={banner.banner_image_caption || "ICC Pune"} width={1920} height={1080} className="xl:h-screen" />
+            <section className="bg-black text-white px-5 sm:px-10 md:px-15 lg:px-20 lg:pl-[20%] xl:pl-[30%] py-20 flex flex-col gap-10" id="overview">
                 <h2 className="uppercase text-2xl">Overview</h2>
                 <p className="text-sm leading-6">The International Convention Centre (ICC) is a mixed-use development known as one of the most extensive composite trade and convention centers in South Asia. ICC is located at Senapati Bapat Road, in the heart of Pune and spans across ~ 2.2 million sq. ft. of area. It offers a conducive atmosphere for infinite opportunities for trade and business alliances.
                 
@@ -75,7 +75,7 @@ export default function AboutUsPage({
             </section>
             {
                 management_introduction && (
-                <section className="bg-[#464646] text-white px-5 sm:px-10 md:px-15 lg:px-20 lg:pl-[30%] py-20 flex flex-col gap-10" id="management">
+                <section className="bg-[#464646] text-white px-5 sm:px-10 md:px-15 lg:px-20 lg:pl-[20%] xl:pl-[30%] py-20 flex flex-col gap-10" id="management">
                     <h2 className="uppercase text-2xl">{management_introduction.introduction_caption}</h2>
                     <p className="text-sm leading-6">{parser(nl2br(management_introduction.introduction_description))}</p>
                     {
@@ -94,7 +94,7 @@ export default function AboutUsPage({
             }
             {
                 landmark_introduction && (
-                    <section className="bg-[#58595B] text-white px-5 sm:px-10 md:px-15 lg:px-20 lg:pl-[30%] py-20 flex flex-col gap-10" id="location">
+                    <section className="bg-[#58595B] text-white px-5 sm:px-10 md:px-15 lg:px-20 lg:pl-[20%] xl:pl-[30%] py-20 flex flex-col gap-10" id="location">
                         <h2 className="uppercase text-2xl">{landmark_introduction.introduction_caption}</h2>
                         <p className="text-sm leading-6">{parser(nl2br(landmark_introduction.introduction_description))}</p>
                         <h3 className="text-xl">Distance Chart</h3>
@@ -112,13 +112,13 @@ export default function AboutUsPage({
                             </ul>
                         )
                         }
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1891.424298153635!2d73.8291719!3d18.5357428!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c06ce5555555%3A0xd8f30539fc95f1b4!2sMCCIA%20Trade%20Tower!5e0!3m2!1sen!2sin!4v1610606749209!5m2!1sen!2sin" className="h-100 w-full md:w-[85%]"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1891.424298153635!2d73.8291719!3d18.5357428!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c06ce5555555%3A0xd8f30539fc95f1b4!2sMCCIA%20Trade%20Tower!5e0!3m2!1sen!2sin!4v1610606749209!5m2!1sen!2sin" className="h-100 w-full xl:w-[85%]"></iframe>
                     </section>
                 )
             }
             {
                 occupant_introduction && (
-                    <section className="bg-[#818286] text-white px-5 sm:px-10 md:px-15 lg:px-20 lg:pl-[30%] py-20 flex flex-col gap-10" id="clients">
+                    <section className="bg-[#818286] text-white px-5 sm:px-10 md:px-15 lg:px-20 lg:pl-[20%] xl:pl-[30%] py-20 flex flex-col gap-10" id="clients">
                         <h2 className="uppercase text-2xl">{occupant_introduction.introduction_caption}</h2>
                         <p className="text-sm leading-6">{parser(nl2br(occupant_introduction.introduction_description))}</p>
                         {

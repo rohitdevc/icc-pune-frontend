@@ -1,5 +1,5 @@
 import { generateMetadata as createMetadata } from '@/components/utils/generateMetadata';
-import { getDevelopment } from '@/lib/developments';
+import { getDevelopments, getDevelopment } from '@/lib/developments';
 import { notFound } from "next/navigation";
 import ProjectPage from '@/components/pages/project';
 
@@ -10,7 +10,20 @@ type PageProps = {
   }>
 }
 
-export const dynamic = "force-dynamic";
+export const dynamicParams = false;
+
+export async function generateStaticParams() {
+  const developments = await getDevelopments();
+
+  return developments.map((development) => {
+    const [projectCategoryUrlSlug, projectUrlSlug] = development.page_slug.split("/");
+
+    return {
+      "project-category-url-slug": projectCategoryUrlSlug,
+      "project-url-slug": projectUrlSlug,
+    }
+  });
+}
 
 export async function generateMetadata({ params }: PageProps) {
   const { "project-category-url-slug": project_category_url_slug, "project-url-slug": project_url_slug } = await params;

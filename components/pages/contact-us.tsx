@@ -8,13 +8,40 @@ import { EnquiryFormErrors, EnquiryForm } from "@/types/forms";
 import { useEffect, useRef, useState } from "react";
 
 import Link from "next/link";
+import Image from "next/image";
 
 import Loader from "@/components/utils/loader";
 
 import { isEmail, isEmpty } from 'validator';
 
+import nl2br from "nl2br";
+import parser from 'html-react-parser';
+
 export default function ContactUsPage() {
     const basePath = process.env.NEXT_PUBLIC_PATH!.replace(/\/$/, "");
+
+    const [headerHeight, setHeaderHeight] = useState(0);
+    const [footerHeight, setFooterHeight] = useState(0);
+
+    useEffect(() => {
+        const header = document.querySelector("header");
+        const footer = document.querySelector("footer");
+
+        if (!header || !footer) return;
+
+        const updateHeights = () => {
+            setHeaderHeight(header.getBoundingClientRect().height);
+            setFooterHeight(footer.getBoundingClientRect().height);
+        };
+
+        const observer = new ResizeObserver(updateHeights);
+
+        observer.observe(header);
+        observer.observe(footer);
+        updateHeights();
+
+        return () => observer.disconnect();
+    }, []);
 
     const [showLoader, updateLoader] = useState(false);
 
@@ -55,9 +82,9 @@ export default function ContactUsPage() {
     const enquiryPhoneNumberRef = useRef<HTMLInputElement>(null);
     const enquiryCompanyNameRef = useRef<HTMLInputElement>(null);
     const enquiryAddressRef = useRef<HTMLInputElement>(null);
-    const enquiryMessageRef = useRef<HTMLTextAreaElement>(null);
+    const enquiryMessageRef = useRef<HTMLInputElement>(null);
 
-    const refMap: Record<string, React.RefObject<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement | null>> = {
+    const refMap: Record<string, React.RefObject<HTMLInputElement | null>> = {
         enquiry_name: enquiryNameRef,
         enquiry_email_address: enquiryEmailAddressRef,
         enquiry_phone_number: enquiryPhoneNumberRef,
@@ -119,7 +146,7 @@ export default function ContactUsPage() {
               if(typeof error_response === "object" && error_response !== null && !Array.isArray(error_response)) {
                 error_response = Object.values(error_response);
 
-                const { path, msg } = error_response[0][0];
+                const [path, msg] = Object.entries(error_response[0])[0];
 
                 const error_message = msg;
                 const error_path = path;
@@ -163,8 +190,87 @@ export default function ContactUsPage() {
     return (
         <>
         <Header />
-        <main>
-
+        <main className="bg-black text-white px-5 sm:px-10 md:px-15 lg:px-20 lg:pl-[20%] xl:pl-[30%] " style={{
+            marginTop: `${headerHeight}px`,
+            marginBottom: `${footerHeight}px`,
+            minHeight: `calc(100vh - ${headerHeight}px - ${footerHeight}px)`
+        }}>
+          <section className="py-10 flex gap-10 sm:gap-30">
+            <Image className="w-20 md:w-25 h-20 md:h-25" src={`${basePath}/images/panchshil-logo.jpg`} width={143} height={143} alt="Panchshil Logo" />
+            <div className="flex flex-col gap-5">
+              <div className="flex flex-col gap-2">
+                <h1 className="uppercase font-bold">Corporate Office</h1>
+                <p className="text-sm">Panchshil Realty<br />Tech Park One, Tower - E, 191 Yerwada,<br />Pune - 411 006. INDIA.</p>
+                <span className="text-sm">Tel: <Link href="tel:+912066473200" className="text-[lightblue]">+91-20-66473200</Link></span>
+                <span className="text-sm">Email: <Link href="mailto:officeparks@panchshil.com" className="text-[lightblue]">officeparks@panchshil.com</Link></span>
+              </div>
+              <div className="flex flex-col gap-2">
+                <h2 className="uppercase font-bold">Mumbai Office</h2>
+                <p className="text-sm">Panchshil Realty<br />20th Floor, Express Towers, Nariman Point, Mumbai - 400021. INDIA.</p>
+                <span className="text-sm">Tel: <Link href="tel:+912266473200" className="text-[lightblue]">+91-22-66863939</Link></span>
+              </div>
+            </div>
+          </section>
+          <form className="py-10 flex flex-col gap-5 text-sm" onSubmit={enquiryFormSubmit} autoComplete="off">
+            <div className="flex flex-col md:flex-row items-left md:items-center">
+              <label className="uppercase w-55">Name*</label>
+              <div className="relative">
+                <input type="text" name="enquiry_name" className="bg-white text-black w-full md:w-xs py-1 px-1 outline-none" onChange={handleEnquiryFormChange} value={enquiryForm.enquiry_name} ref={enquiryNameRef} />
+                <div className="h-1">
+                    <span className={`text-xs transition-all duration-200 ${errors.enquiry_name ? "opacity-100" : "opacity-0"}`}>{errors.enquiry_name}</span>
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col md:flex-row items-left md:items-center">
+              <label className="uppercase w-55">Email*</label>
+              <div className="relative">
+                <input type="email" name="enquiry_email_address" className="bg-white text-black w-full md:w-xs py-1 px-1 outline-none" onChange={handleEnquiryFormChange} value={enquiryForm.enquiry_email_address} ref={enquiryEmailAddressRef} />
+                <div className="h-1">
+                    <span className={`text-xs transition-all duration-200 ${errors.enquiry_email_address ? "opacity-100" : "opacity-0"}`}>{errors.enquiry_email_address}</span>
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col md:flex-row items-left md:items-center">
+              <label className="uppercase w-55">Contact*</label>
+              <div className="relative">
+                <input type="tel" inputMode="numeric" name="enquiry_phone_number" className="bg-white text-black w-full md:w-xs py-1 px-1 outline-none" onChange={handleEnquiryFormChange} value={enquiryForm.enquiry_phone_number} ref={enquiryPhoneNumberRef} />
+                <div className="h-1">
+                    <span className={`text-xs transition-all duration-200 ${errors.enquiry_phone_number ? "opacity-100" : "opacity-0"}`}>{errors.enquiry_phone_number}</span>
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col md:flex-row items-left md:items-center">
+              <label className="uppercase w-55">Company</label>
+              <div className="relative">
+                <input type="text" name="enquiry_company_name" className="bg-white text-black w-full md:w-xs py-1 px-1 outline-none" onChange={handleEnquiryFormChange} value={enquiryForm.enquiry_company_name} ref={enquiryCompanyNameRef} />
+                <div className="h-1">
+                    <span className={`text-xs transition-all duration-200 ${errors.enquiry_company_name ? "opacity-100" : "opacity-0"}`}>{errors.enquiry_company_name}</span>
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col md:flex-row items-left md:items-center">
+              <label className="uppercase w-55">Address</label>
+              <div className="relative">
+                <input type="text" name="enquiry_address" className="bg-white text-black w-full md:w-xs py-1 px-1 outline-none" onChange={handleEnquiryFormChange} value={enquiryForm.enquiry_address} ref={enquiryCompanyNameRef} />
+                <div className="h-1">
+                    <span className={`text-xs transition-all duration-200 ${errors.enquiry_address ? "opacity-100" : "opacity-0"}`}>{errors.enquiry_address}</span>
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col md:flex-row items-left md:items-center">
+              <label className="uppercase w-55">Comments / Enquiry</label>
+              <div className="relative">
+                <input type="text" name="enquiry_message" className="bg-white text-black w-full md:w-xs py-1 px-1 outline-none" onChange={handleEnquiryFormChange} value={enquiryForm.enquiry_message} ref={enquiryMessageRef} />
+                <div className="h-1">
+                    <span className={`text-xs transition-all duration-200 ${errors.enquiry_message ? "opacity-100" : "opacity-0"}`}>{errors.enquiry_message}</span>
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col md:flex-row items-left md:items-center">
+              <label className="uppercase w-55"></label>
+              <input type="submit" className="bg-white text-black py-2 rounded-sm px-3 cursor-pointer w-fit" value="Submit"/>
+            </div>
+          </form>
         </main>
         <Footer />
         <Loader showLoader={showLoader} />
