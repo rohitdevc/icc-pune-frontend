@@ -173,9 +173,9 @@ export default function Header() {
         <header className="fixed top-0 w-full z-5 bg-white">
             <div className="relative">
                 <div className="flex items-center justify-between pr-5 sm:px-10 md:px-15 xl:px-25 2xl:px-40">
-                    <div className="bg-[#ececec] px-5 py-3 w-[130px] lg:w-auto">
+                    <Link href="/" className="bg-[#ececec] px-5 py-3 w-[130px] lg:w-auto">
                         <Image src={`${basePath}/images/icc-logo.png`} alt="ICC Pune logo" width={155} height={60} className="object-contain" />
-                    </div>
+                    </Link>
                     {
                         nav_options && nav_options.length > 0 && (
                             <ul className="hidden lg:flex text-white uppercase text-xs" onMouseLeave={() => {updateActiveFirstNav(-1); updateActiveSecondNav(-1) } }>
@@ -228,20 +228,20 @@ export default function Header() {
                     <ul className={`absolute top-15 lg:hidden w-full flex-col justify-center items-center z-2 text-white uppercase text-xs transition-all duration-300 origin-top ${menuState ? 'scale-y-100' : 'scale-y-0'}`}>
                         {
                             nav_options.map((nav_option, key) => (
-                                <li key={key} className="relative">
+                                <li key={key} className="relative border-t border-black">
                                     {
                                         nav_option.nav_link ? (
-                                            <Link className="py-3 flex justify-center items-center w-full" href={nav_option.nav_link} style={{backgroundColor: `${nav_option.nav_colour_code}`}}>{nav_option.nav_name}</Link>
+                                            <Link className="py-2 flex justify-center items-center w-full" href={nav_option.nav_link} style={{backgroundColor: `${nav_option.nav_colour_code}`}}>{nav_option.nav_name}</Link>
                                         ) : (
-                                            <span className="cursor-pointer py-3 flex justify-center items-center w-full gap-1" style={{backgroundColor: `${nav_option.nav_colour_code}`}} onClick={() => { updateMobileMenu(key); }}>{nav_option.nav_name} <IoMdArrowDropdown size={20} /></span>
+                                            <span className="cursor-pointer py-2 flex justify-center items-center w-full gap-1" style={{backgroundColor: `${nav_option.nav_colour_code}`}} onClick={() => { updateMobileMenu(key); }}>{nav_option.nav_name} <IoMdArrowDropdown size={20} /></span>
                                         )
                                     }
                                     {
                                         key === 1 && nav_option.nav_sub_links && nav_option.nav_sub_links.length > 0 && (
-                                            <ul className={`z-3 w-full flex flex-col gap-[0.7] text-[10px] transition-all duration-200 origin-top ${activeFirstNav === key ? 'scale-y-100 max-h-96 mt-[0.8]' : 'scale-y-0 max-h-0 mt-0'}`}>
+                                            <ul className={`z-3 w-full flex flex-col text-[10px] transition-all duration-200 origin-top ${activeFirstNav === key ? 'scale-y-100 max-h-96' : 'scale-y-0 max-h-0'}`}>
                                                 {
                                                     nav_option.nav_sub_links.map((nav_sub_link, nav_sub_link_key) => (
-                                                        <li key={nav_sub_link_key} className="relative">
+                                                        <li key={nav_sub_link_key} className="relative border-t border-black">
                                                             <Link className="py-2 flex justify-center items-center w-full whitespace-nowrap" href={nav_sub_link.nav_link} style={{backgroundColor: `${nav_option.nav_colour_code}`}}>{nav_sub_link.nav_name}</Link>
                                                         </li>
                                                     ))

@@ -53,7 +53,7 @@ export default function HomePage({banner}: Props) {
             <video className="max-w-screen mx-auto" controls autoPlay muted loop style={{height: `calc(100vh - ${headerHeight}px - ${footerHeight}px)`}}>
                 <source src={banner.banner_video_url}></source>
             </video>
-            <Image className="absolute right-5 md:right-10 bottom-5 md:bottom-10 w-10 md:w-15" src={`${basePath}/images/panchshil-logo.png`} width={65} height={65} alt="Panchshil Logo" />
+            <Image className="absolute right-5 md:right-10 bottom-5 md:bottom-10 w-10 md:w-15" src={`${basePath}/images/panchshil-logo.jpg`} width={143} height={143} alt="Panchshil Logo" />
         </main>
         <Footer />
         </>
