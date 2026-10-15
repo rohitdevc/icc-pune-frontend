@@ -10,6 +10,8 @@ type PageProps = {
   }>
 }
 
+export const dynamic = "force-dynamic";
+
 export async function generateMetadata({ params }: PageProps) {
   const { "project-category-url-slug": project_category_url_slug, "project-url-slug": project_url_slug } = await params;
   
