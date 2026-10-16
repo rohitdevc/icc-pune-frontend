@@ -12,7 +12,7 @@ import { generateMetadata as createMetadata } from '@/components/utils/generateM
 
 export async function generateMetadata() {
   const [ meta_data, banner ] = await Promise.all([
-    getMetaData("Project Developer"),
+    getMetaData("Investors"),
     getBanner("Home")
   ])
 

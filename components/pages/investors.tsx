@@ -14,7 +14,7 @@ type Props = {
     investors: Investor[]
 }
 
-export default function ProjectDeveloperPage({
+export default function InvestorPage({
     investors
 }: Props) {
     const basePath = process.env.NEXT_PUBLIC_PATH!.replace(/\/$/, "");

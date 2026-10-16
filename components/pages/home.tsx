@@ -40,21 +40,21 @@ export default function HomePage({banner}: Props) {
     }, []);
 
     return (
-        <>
-        <Header />
-        <main className="bg-cover bg-center bg-no-repeat relative"
-        style={{
-            backgroundImage: `url(${banner.banner_image_url})`,
-            marginTop: `${headerHeight}px`,
-            marginBottom: `${footerHeight}px`,
-            minHeight: `calc(100vh - ${headerHeight}px - ${footerHeight}px)`
-        }}>
-            <video className="max-w-screen mx-auto" controls autoPlay muted loop style={{height: `calc(100vh - ${headerHeight}px - ${footerHeight}px)`}}>
-                <source src={banner.banner_video_url}></source>
-            </video>
-            <Image className="absolute right-5 md:right-10 bottom-5 md:bottom-10 w-10 md:w-15" src={`${basePath}/images/panchshil-logo.jpg`} width={143} height={143} alt="Panchshil Logo" />
-        </main>
-        <Footer />
-        </>
+        <div className="flex h-screen h-dvh flex flex-col overflow-hidden">
+            <Header />
+            <main className="relative min-h-0 flex-1 overflow-hidden bg-cover bg-center bg-no-repeat relative"
+            style={{
+                backgroundImage: `url(${banner.banner_image_url})`,
+                marginTop: `${headerHeight}px`,
+                marginBottom: `${footerHeight}px`,
+                minHeight: `calc(100vh - ${headerHeight}px - ${footerHeight}px)`
+            }}>
+                <video className="block h-full w-full object-contain" controls autoPlay muted loop style={{height: `calc(100vh - ${headerHeight}px - ${footerHeight}px)`}}>
+                    <source src={banner.banner_video_url}></source>
+                </video>
+                <Image className="absolute right-5 bottom-5 md:bottom-10 w-10 md:w-15" src={`${basePath}/images/panchshil-logo.jpg`} width={143} height={143} alt="Panchshil Logo" />
+            </main>
+            <Footer />
+        </div>
     )
 }
