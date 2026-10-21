@@ -42,7 +42,7 @@ export default function HomePage({banner}: Props) {
     return (
         <div className="flex h-screen h-dvh flex flex-col overflow-hidden">
             <Header />
-            <main className="relative min-h-0 flex-1 overflow-hidden bg-cover bg-center bg-no-repeat relative"
+            <main className="min-h-0 flex-1 overflow-hidden bg-cover bg-center bg-no-repeat relative"
             style={{
                 backgroundImage: `url(${banner.banner_image_url})`,
                 marginTop: `${headerHeight}px`,
