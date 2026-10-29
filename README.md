@@ -74,6 +74,7 @@ NEXT_PUBLIC_PATH=
 BASEPATH_PREFIX=
 ASSET_PREFIX=
 API_DOMAIN_NAME=
+REDIS_URL=
 ```
 
 | Variable | Purpose |
@@ -82,6 +83,7 @@ API_DOMAIN_NAME=
 | `BASEPATH_PREFIX` | Optional application base-path configuration |
 | `ASSET_PREFIX` | Optional static asset prefix |
 | `API_DOMAIN_NAME` | API domain used by the application |
+| `REDIS_URL` | Redis URL used by the application. |
 
 Use the appropriate values for local development or deployment. Check the service modules and Next.js configuration to confirm whether additional variables are required.
 
